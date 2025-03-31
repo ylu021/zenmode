@@ -1,9 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import chromeUtils from "../utils/chromeUtils";
 import { StorageKey } from "../types/StorageKeys";
 
 const Switcher = () => {
   const [isChecked, setIsChecked] = useState(false);
+
+  useEffect(() => {
+    getDefaultCheckedState();
+  }, []);
+
+  const getDefaultCheckedState = async () => {
+    await chromeUtils.getSyncStorage(StorageKey.FocusMode, (res) => {
+      setIsChecked(res.focusMode || false);
+    });
+  };
 
   const handleCheckboxChange = async () => {
     const updatedCheck = !isChecked;

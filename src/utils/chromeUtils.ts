@@ -18,11 +18,21 @@ function getSyncStorage<K extends keyof StorageValueMap>(
   return chrome.storage.sync.get(key, callback || (() => {}));
 }
 
-async function updateCurrentTab(updatedSites: string[]) {
+async function refreshCurrentTab() {
+  await updateCurrentTab([], true);
+}
+
+async function updateCurrentTab(updatedSites: string[], skipMatch = false) {
   let queryOptions = { active: true, currentWindow: true };
 
   let [tab] = await chrome.tabs.query(queryOptions);
   if (!tab.id) return;
+
+  if (skipMatch) {
+    chrome.tabs.reload(tab.id);
+    return;
+  }
+
   const domain = tab.url ? extractValidDomain(tab.url) : "";
   const isMatched = updatedSites.some((site) => {
     if (site === domain) return true;
@@ -42,4 +52,5 @@ export default {
   setSyncStorage,
   getSyncStorage,
   updateCurrentTab,
+  refreshCurrentTab,
 };

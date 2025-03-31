@@ -11,6 +11,9 @@ Zen Mode helps you stay focused by only allowing access to websites you choose �
 
 No fluff. Just focus.
 
+<img width="1535" alt="Screenshot 2025-03-31 at 3 27 30 PM" src="https://github.com/user-attachments/assets/6967f712-faea-46bc-9944-cf4957c5b279" />
+
+
 ## 🧩 Install Zen Mode Extension (Developer Version)
 
 1. Download `zen-mode-v-1.0.0.zip` from [releases](https://github.com/ylu021/zenmode/releases)

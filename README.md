@@ -1,3 +1,16 @@
+## 🧘‍♂️ Zen Mode – Stay Focused. Stay Present.
+Block distractions and create your flow state.
+Zen Mode helps you stay focused by only allowing access to websites you choose — everything else fades away.
+* ✅ Add your allowed sites with one click
+
+* 🚫 Block everything else by default
+
+* ⚡ Instant toggle with a simple popup UI
+
+* 🧩 Lightweight and privacy-respecting
+
+No fluff. Just focus.
+
 ## 🧩 Install Zen Mode Extension (Developer Version)
 
 1. Download `zen-mode-v-1.0.0.zip` from [releases](https://github.com/ylu021/zenmode/releases)

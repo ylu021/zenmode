@@ -13,6 +13,7 @@ No fluff. Just focus.
 
 <img width="1535" alt="Screenshot 2025-03-31 at 3 27 30 PM" src="https://github.com/user-attachments/assets/6967f712-faea-46bc-9944-cf4957c5b279" />
 
+<img width="392" alt="Screenshot 2025-03-31 at 6 08 10 PM" src="https://github.com/user-attachments/assets/09ac4103-2f8a-4e6b-82c4-c74e4a2467b9" />
 
 ## 🧩 Install Zen Mode Extension (Developer Version)
 
@@ -27,7 +28,8 @@ No fluff. Just focus.
 2. Run `npm install && npm run build`
 3. Go to `chrome://extensions`
 4. Enable **Developer Mode**
-5. Click **Load unpacked** and select the `dist/` folder
+5. Click **Load unpacked** and select the `dist/` folder  
+   
+## Demo 
 
 https://github.com/user-attachments/assets/75412af8-3145-4433-94b5-cc55b3a4fb92
-

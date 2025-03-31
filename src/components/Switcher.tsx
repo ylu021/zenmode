@@ -4,22 +4,27 @@ import { StorageKey } from "../types/StorageKeys";
 
 const Switcher = () => {
   const [isChecked, setIsChecked] = useState(false);
+  const [allowed, setAllowed] = useState<string[]>([]);
 
   useEffect(() => {
     getDefaultCheckedState();
   }, []);
 
   const getDefaultCheckedState = async () => {
-    await chromeUtils.getSyncStorage(StorageKey.FocusMode, (res) => {
-      setIsChecked(res.focusMode || false);
-    });
+    await chromeUtils.getSyncStorage(
+      [StorageKey.FocusMode, StorageKey.AllowedSites],
+      (res) => {
+        setIsChecked(res.focusMode || false);
+        setAllowed(res.allowedSites || []);
+      }
+    );
   };
 
   const handleCheckboxChange = async () => {
     const updatedCheck = !isChecked;
     setIsChecked(updatedCheck);
     await chromeUtils.setSyncStorage(StorageKey.FocusMode, updatedCheck, () => {
-      location.reload();
+      chromeUtils.updateCurrentTab(allowed);
     });
   };
 

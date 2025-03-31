@@ -12,6 +12,7 @@ function setSyncStorage(key: string, value: string[], callback?: () => void) {
 function Popup() {
   const [inputDomain, setInputDomain] = useState("");
   const [allowedSites, setAllowedSites] = useState<string[]>([]);
+  const [currentTab, setCurrentTab] = useState<chrome.tabs.Tab | null>(null);
 
   useEffect(() => {
     // Get current tab and prefill input
@@ -24,18 +25,20 @@ function Popup() {
 
   async function getCurrentTab() {
     let queryOptions = { active: true, lastFocusedWindow: true };
-    // `tab` will either be a `tabs.Tab` instance or `undefined`.
+
     let [tab] = await chrome.tabs.query(queryOptions);
     const domain = tab.url ? extractValidDomain(tab.url) : "";
     setInputDomain(domain ?? "");
-    return tab;
+    setCurrentTab(tab);
   }
 
   const updateAllowedSites = (updatedSites: string[]) => {
     if (chrome?.storage?.sync) {
-      setSyncStorage(StorageKey.AllowedSites, updatedSites, () =>
-        updateAllowed(updatedSites)
-      );
+      setSyncStorage(StorageKey.AllowedSites, updatedSites, () => {
+        updateAllowed(updatedSites);
+        // if equals current tab
+        chromeUtils.updateCurrentTab(updatedSites);
+      });
     } else {
       updateAllowed(updatedSites);
     }
@@ -46,12 +49,27 @@ function Popup() {
     setInputDomain("");
   };
 
-  const deleteSite = (site: string) => {
+  const deleteSite = async (site: string) => {
     const confirmed = window.confirm(
       `Are you sure you want to remove "${site}"?`
     );
     if (confirmed) {
       updateAllowedSites(allowedSites.filter((s) => s !== site));
+      // refresh current tab if its the removed
+      if (!currentTab?.id) return;
+      const domain = currentTab?.url ? extractValidDomain(currentTab.url) : "";
+
+      let isMatched = false;
+      if (site === domain) isMatched = true;
+      if (site.startsWith("*.")) {
+        const base = site.replace("*.", "");
+        isMatched = domain?.endsWith(`.${base}`) ? true : false;
+      }
+      setTimeout(() => {
+        if (currentTab.id !== undefined && isMatched) {
+          chrome.tabs.reload(currentTab.id);
+        }
+      }, 500);
     }
   };
 

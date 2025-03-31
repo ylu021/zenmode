@@ -8,8 +8,9 @@
     "build:vite": "tsc -b && vite build",
     "build:content": "node esbuild.content.js",
     "build": "npm run build:vite && npm run build:content",
+    "clean:zip": "rm -f zen-mode.zip",
     "zip": "cd dist && zip -r zen-mode.zip .",
-    "release": "npm run build && npm run zip",
+    "release": "npm run clean:zip && npm run build && npm run zip",
     "lint": "eslint .",
     "preview": "vite preview"
   },

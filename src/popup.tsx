@@ -61,7 +61,7 @@ function Popup() {
       <div className="mb-2 h-[150px] flex-shrink-0 flex self-center">
         <Switcher />
       </div>
-      <div className="lg:w-1/4 md:w-full flex-grow">
+      <div className="w-full flex-grow">
         <Form
           defaultInput={inputDomain}
           allowedSites={allowedSites}

@@ -18,7 +18,9 @@ const Switcher = () => {
   const handleCheckboxChange = async () => {
     const updatedCheck = !isChecked;
     setIsChecked(updatedCheck);
-    await chromeUtils.setSyncStorage(StorageKey.FocusMode, updatedCheck);
+    await chromeUtils.setSyncStorage(StorageKey.FocusMode, updatedCheck, () => {
+      location.reload();
+    });
   };
 
   return (

@@ -1,6 +1,6 @@
 ## 🧩 Install Zen Mode Extension (Developer Version)
 
-1. Download from [releases](https://github.com/ylu021/zenmode/releases)
+1. Download `zen-mode-v-1.0.0.zip` from [releases](https://github.com/ylu021/zenmode/releases)
 2. Go to `chrome://extensions`
 3. Enable **Developer Mode**
 4. Click **Load unpacked** and select the `dist/` folder

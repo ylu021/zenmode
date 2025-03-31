@@ -12,3 +12,6 @@
 3. Go to `chrome://extensions`
 4. Enable **Developer Mode**
 5. Click **Load unpacked** and select the `dist/` folder
+
+https://github.com/user-attachments/assets/75412af8-3145-4433-94b5-cc55b3a4fb92
+

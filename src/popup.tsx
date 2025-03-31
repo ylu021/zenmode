@@ -49,7 +49,7 @@ function Popup() {
   return (
     <div className="p-4 font-sans flex flex-col w-screen lg:min-h-screen justify-around items-center">
       <h1 className="text-lg font-bold my-2 text-center flex-grow">Zen Mode</h1>
-      <div className="bg-red mb-2 h-[150px] flex-shrink-0">
+      <div className="mb-2 h-[150px] flex-shrink-0 flex self-center">
         <Switcher />
       </div>
       <div className="lg:w-1/4 md:w-full flex-grow">

@@ -8,9 +8,8 @@
     "build:vite": "tsc -b && vite build",
     "build:content": "node esbuild.content.js",
     "build": "npm run build:vite && npm run build:content",
-    "pack:crx": "npx crx pack dist -o dist/zen-mode.crx -p key.pem",
     "zip": "cd dist && zip -r zen-mode.zip .",
-    "release": "npm run build && npm run pack:crx && npm run zip",
+    "release": "npm run build && npm run zip",
     "lint": "eslint .",
     "preview": "vite preview"
   },
